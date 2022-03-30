@@ -1,0 +1,16 @@
+exports.NotFound_Code = 404;
+exports.NotFound = "File Not Found...";
+exports.Created = 201;
+exports.Ok_Code = 200;
+exports.Ok = "Successful...";
+exports.Forbidden_Code = 403;
+exports.Forbidden = "Action Forbidden";
+exports.Unauthorized_Code = 401;
+exports.Unauthorized = "Access Denied.";
+exports.InternalServer_Code = 500;
+exports.InternalServer = "Something Went Wrong...";
+exports.Bad_Request = 400;
+exports.Invalid_Token = "Invalid Token Provided...";
+exports.Exists = "User Already Exists...";
+exports.Validation_Code = 403;
+exports.Validation = "Invalid Username or Password";
