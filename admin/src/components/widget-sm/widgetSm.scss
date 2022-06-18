@@ -1,0 +1,38 @@
+.table-section {
+	.table-cell {
+		text-align: center;
+
+		.cell-wrapper {
+			display: flex;
+			align-items: center;
+
+			.product-image {
+				width: 2rem;
+				height: 2rem;
+				border-radius: 50%;
+				margin-right: 0.5rem;
+				object-fit: cover;
+			}
+		}
+
+		.status {
+			background-color: rgb(207, 204, 204);
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 15px;
+			width: 6rem;
+			cursor: pointer;
+
+			&:hover {
+				background-color: red;
+				color: white;
+			}
+
+			.status-icon {
+				padding-right: 0.5rem;
+			}
+		}
+	}
+}

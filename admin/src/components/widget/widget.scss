@@ -1,0 +1,62 @@
+.widget-container {
+	display: flex;
+	padding: 1rem;
+	flex: 1;
+	justify-content: space-between;
+	border-radius: 10px;
+	box-shadow: 10px 4px 10px 4px rgba(201, 201, 201, 0.5),
+		5px 5px 10px 10px rgba(201, 201, 201, 0.5);
+	height: auto;
+
+	.widget-left,
+	.widget-right {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		.widget-title {
+			font-weight: bold;
+			color: rgb(160, 160, 160);
+			cursor: default;
+			margin-bottom: 10px;
+		}
+
+		.widget-counter {
+			font-size: 30px;
+			font-weight: 300;
+			cursor: default;
+			margin-bottom: 10px;
+		}
+
+		.widget-link {
+			font-size: 15px;
+			border-bottom: 1px solid gray;
+			cursor: pointer;
+
+			&:hover {
+				color: red;
+			}
+		}
+
+		.widget-percentage {
+			display: flex;
+			align-items: center;
+			font-size: 15px;
+
+			&.positive {
+				color: green;
+			}
+
+			&.negative {
+				color: red;
+			}
+		}
+
+		.person-icon {
+			font-size: 25px;
+			padding: 5px;
+			border-radius: 5px;
+			align-self: flex-end;
+		}
+	}
+}

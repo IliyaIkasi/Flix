@@ -1,4 +1,8 @@
 .home-page {
 	background-color: var(--main-color);
 	overflow: hidden;
+
+	.list-content {
+		margin-bottom: 1rem;
+	}
 }

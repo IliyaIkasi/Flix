@@ -1,0 +1,82 @@
+.featured-section {
+	flex: 2;
+	padding: 1rem;
+	box-shadow: 10px 4px 10px 4px rgba(201, 201, 201, 0.5),
+		5px 5px 10px 10px rgba(201, 201, 201, 0.5);
+	border-radius: 10px;
+	height: auto;
+
+	.top-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: gray;
+		margin-bottom: 10px;
+
+		.top-title {
+			font-size: 20px;
+			font-weight: bold;
+		}
+	}
+
+	.bottom-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+
+		.featured-progressbar {
+			width: 8rem;
+			height: 8rem;
+			margin-bottom: 20px;
+		}
+
+		.bottom-title {
+			font-size: 20px;
+			font-weight: bold;
+			color: gray;
+		}
+
+		.bottom-amount {
+			font-size: 30px;
+		}
+
+		.bottom-desc {
+			font-size: 13px;
+			color: gray;
+			text-align: center;
+		}
+		.bottom-summary {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 1rem;
+
+			.summary-item {
+				text-align: center;
+
+				.item-title {
+					font-size: 15px;
+					color: gray;
+					align-items: center;
+				}
+
+				.item-result {
+					display: flex;
+					align-items: center;
+					font-size: 15px;
+					margin-top: 10px;
+
+					&.positive {
+						color: green;
+					}
+					&.negative {
+						color: red;
+					}
+				}
+			}
+		}
+	}
+}

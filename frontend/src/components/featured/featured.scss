@@ -43,7 +43,7 @@
 
 	.featured-info {
 		width: 25%;
-		height: 10rem;
+		height: 50%;
 		position: absolute;
 		left: 100px;
 		top: 15rem;
@@ -52,16 +52,19 @@
 		flex-direction: column;
 
 		.fade {
-			animation-name: fade;
-			animation-duration: 1.5s;
+			justify-content: center;
+			height: 15rem;
+			display: flex;
+			flex-direction: column;
 
 			img {
-				width: 300px;
-			}
-			.info-desc {
-				margin: 1rem 0;
+				margin: 0.5rem 0;
+				width: 100%;
+				height: 10rem;
+				border-radius: 10px;
 			}
 		}
+
 		.info-buttons {
 			display: flex;
 

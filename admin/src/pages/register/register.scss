@@ -1,0 +1,119 @@
+.form-container {
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 1) 100%
+		),
+		url(../../medias/originals.jpg);
+	background-size: cover;
+	position: relative;
+
+	.top-section {
+		.top-wrapper {
+			padding: 1rem 5rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.flix-logo {
+				width: 5rem;
+				height: 3rem;
+				border-radius: 10px;
+				object-fit: cover;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.signinBtn {
+				background-color: red;
+				color: white;
+				border: none;
+				font-size: 16px;
+				font-weight: 500;
+				padding: 0.5rem 1rem;
+				border-radius: 10px;
+				cursor: pointer;
+				z-index: 2;
+
+				&:hover {
+					background-color: rgb(255, 70, 10);
+				}
+				&:active {
+					background-color: red;
+				}
+			}
+		}
+	}
+
+	.register-section {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		justify-content: center;
+		text-align: center;
+		align-items: center;
+		color: white;
+
+		h1 {
+			font-size: 50px;
+		}
+		h2 {
+			margin: 10px 0;
+		}
+		p {
+			font-size: 20px;
+		}
+		.form-section {
+			width: 50%;
+			display: flex;
+			background-color: white;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 1rem;
+			border-radius: 10px;
+			height: 3rem;
+
+			.text-box {
+				flex: 9;
+				height: 100%;
+				border: none;
+				padding: 0 10px;
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+			}
+			.register-btn {
+				flex: 3;
+				height: 100%;
+				border: none;
+				background-color: red;
+				color: white;
+				font-size: 20px;
+				cursor: pointer;
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+
+				&:hover {
+					background-color: rgb(255, 70, 10);
+				}
+				&:active {
+					background-color: red;
+				}
+			}
+		}
+		.link {
+			margin-top: 1rem;
+			.nav-link {
+				color: red;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline white;
+				}
+			}
+		}
+	}
+}

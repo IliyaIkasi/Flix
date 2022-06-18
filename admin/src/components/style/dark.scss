@@ -1,0 +1,30 @@
+.App.dark {
+	background-color: #111;
+	color: gray;
+
+	.chart-grid {
+		stroke: gray;
+	}
+
+	.table-section {
+		background-color: #111;
+
+		.table-cell {
+			color: gray;
+		}
+	}
+
+	.navbar-section {
+		color: gray;
+		border-color: gray;
+
+		.search-container {
+			border-color: gray;
+		}
+	}
+
+	.sidebar-section {
+        background-color: #111;
+		// border-color: gray;
+	}
+}

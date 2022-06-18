@@ -1,27 +1,38 @@
 import "./register.scss";
 import flix from "../../medias/images/flix.jpg";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { register } from "../../context/auth_context/AuthApiCalls";
+import { AuthContext } from "../../context/auth_context/AuthContext";
 
 const Register = () => {
+	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { isFetching, dispatch } = useContext(AuthContext);
 
+	const usernameRef = useRef();
 	const emailRef = useRef();
 	const passwordRef = useRef();
 
-	const nextForm = () => {
+	const nextForm = (e) => {
+		e.preventDefault();
+		setUsername(usernameRef.current.value);
 		setEmail(emailRef.current.value);
 	};
-	const submitForm = () => {
+	const submitForm = (e) => {
+		e.preventDefault();
 		setPassword(passwordRef.current.value);
+		register({ username, email, password }, dispatch);
 	};
 
 	return (
 		<div className="form-container">
 			<div className="top-section">
 				<div className="top-wrapper">
-					<img src={flix} alt={flix} className="flix-logo" />
+					<Link to="/" className="flix-logo">
+						<img src={flix} alt={flix} className="flix-logo" />
+					</Link>
 					<button className="signinBtn">Sign Up</button>
 				</div>
 			</div>
@@ -35,12 +46,23 @@ const Register = () => {
 					<div className="form-section">
 						<input
 							className="text-box"
+							type="text"
+							required
+							placeholder="Username"
+							ref={usernameRef}
+						/>
+						<input
+							className="text-box"
 							type="email"
 							required
 							placeholder="Email Address"
 							ref={emailRef}
 						/>
-						<button className="register-btn" onClick={nextForm}>
+						<button
+							className="register-btn"
+							onClick={nextForm}
+							disabled={isFetching}
+						>
 							Get Started
 						</button>
 					</div>
@@ -53,7 +75,11 @@ const Register = () => {
 							placeholder="Password"
 							ref={passwordRef}
 						/>
-						<button className="register-btn" onClick={submitForm}>
+						<button
+							className="register-btn"
+							onClick={submitForm}
+							disabled={isFetching}
+						>
 							Start
 						</button>
 					</form>

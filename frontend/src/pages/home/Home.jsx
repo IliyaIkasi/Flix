@@ -24,8 +24,7 @@ const Home = () => {
 			try {
 				const res = await axios.get(url, {
 					headers: {
-						"flix-token":
-							"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzFhYjBhZDVhMWI3YTg3ZjIzNTBjNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODI0MjUxNiwiZXhwIjoxNjQ4Njc0NTE2fQ.nKNjsU5tgR93Wm882WU80Po0kIUYc_P_AJJbAv94R4k",
+						"flix-token": JSON.parse(localStorage.getItem("user-front")).token,
 					},
 				});
 				setLists(res.data.list);
@@ -40,9 +39,11 @@ const Home = () => {
 		<div className="home-page">
 			<NavBar />
 			<Featured type={type} />
-			{lists.map((list) => (
-				<List list={list} key={list._id} title={list.title} />
-			))}
+			<div className="list-content">
+				{lists.map((list) => (
+					<List list={list} key={list._id} />
+				))}
+			</div>
 		</div>
 	);
 };

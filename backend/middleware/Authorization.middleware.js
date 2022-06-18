@@ -16,7 +16,9 @@ function authorization(req, res, next) {
 		req.user = payload;
 		next();
 	} catch (error) {
-		return res.status(InternalServer_Code).json({ message: InternalServer, error: error.message });
+		return res
+			.status(InternalServer_Code)
+			.json({ message: InternalServer, error: error.message });
 	}
 }
 

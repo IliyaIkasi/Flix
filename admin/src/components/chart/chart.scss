@@ -1,0 +1,16 @@
+.chart-section {
+	flex: 4;
+	box-shadow: 10px 4px 10px 4px rgba(201, 201, 201, 0.5),
+		5px 5px 10px 10px rgba(201, 201, 201, 0.5);
+	border-radius: 10px;
+	padding: 1rem;
+	color: gray;
+
+	.chart-title {
+		margin-bottom: 1rem;
+	}
+
+	.chart-grid {
+		stroke: lightgray;
+	}
+}

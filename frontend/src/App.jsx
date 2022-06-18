@@ -4,9 +4,11 @@ import Watch from "./pages/watch/Watch";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import { useContext } from "react";
+import { AuthContext } from "./context/auth_context/AuthContext";
 
 const App = () => {
-	const user = true;
+	const { user } = useContext(AuthContext);
 
 	return (
 		<BrowserRouter>
@@ -14,7 +16,7 @@ const App = () => {
 				<Routes>
 					<Route
 						path="/"
-						element={user ? <Home /> : <Navigate replace to="/register" />}
+						element={user ? <Home /> : <Navigate replace to="/login" />}
 					/>
 					<Route
 						path="/login"

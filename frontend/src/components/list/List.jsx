@@ -6,9 +6,10 @@ import ListItem from "../listitem/ListItem";
 import "./list.scss";
 import React, { useRef, useState } from "react";
 
-const List = ({ _id, list }) => {
+const List = ({ list }) => {
 	const [sliderNumber, setSliderNumber] = useState(0);
 	const listRef = useRef();
+	console.log(list.content);
 
 	const handleClick = (direction) => {
 		let distance = listRef.current.getBoundingClientRect().x - 50;
@@ -16,14 +17,13 @@ const List = ({ _id, list }) => {
 			setSliderNumber(sliderNumber - 1);
 			listRef.current.style.transform = `translateX(${315 + distance}px)`;
 		}
-		if (direction === "right" && sliderNumber < 6) {
+		if (direction === "right" && sliderNumber < 1) {
 			setSliderNumber(sliderNumber + 1);
 			listRef.current.style.transform = `translateX(${-315 + distance}px)`;
 		}
 	};
-
 	return (
-		<div className="list-container">
+		<div className="list-container" key={list._id}>
 			<span className="list-title">{list.title}</span>
 			<div className="list-wrapper">
 				<ArrowBackIosOutlined
@@ -32,11 +32,9 @@ const List = ({ _id, list }) => {
 				/>
 				<div className="wrapper-container" ref={listRef}>
 					{list.content.map((item) => (
-						<React.Fragment key={item._id}>
-							<div className="listitem-section">
-								<ListItem key={item.id} item={item} />
-							</div>
-						</React.Fragment>
+						<div className="listitem-section">
+							<ListItem id={item} />
+						</div>
 					))}
 				</div>
 				<ArrowForwardIosOutlined

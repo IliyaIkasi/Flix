@@ -31,7 +31,7 @@ router.post("/", authorization, async (req, res) => {
 router.put("/:id", authorization, async (req, res) => {
 	if (req.user.isAdmin) {
 		try {
-			const updateMovie = await Movie.findByIdAndUpdate(
+			const updateMovie = await List.findByIdAndUpdate(
 				req.params.id,
 				{
 					$set: req.body,
@@ -40,7 +40,9 @@ router.put("/:id", authorization, async (req, res) => {
 			);
 			return res.status(Ok_Code).json({ message: Ok, updateMovie });
 		} catch (error) {
-			return res.status(InternalServer_Code).json({ InternalServer, error });
+			return res
+				.status(InternalServer_Code)
+				.json({ InternalServer, error: error.message });
 		}
 	} else {
 		return res.status(Validation_Code).json({ message: "Admins Only." });

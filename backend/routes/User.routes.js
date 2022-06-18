@@ -34,9 +34,7 @@ router.put("/:id", authorization, async (req, res) => {
 			const { password, ...info } = updateUser._doc;
 			return res.status(Ok_Code).json({ Ok, info });
 		} catch (error) {
-			return res
-				.status(InternalServer_Code)
-				.json({ InternalServer, error });
+			return res.status(InternalServer_Code).json({ InternalServer, error });
 		}
 	} else {
 		return res
@@ -88,7 +86,7 @@ router.get("/", authorization, async (req, res) => {
 	if (req.user.isAdmin) {
 		try {
 			const allUsers = query
-				? await User.find().sort({ _id: -1 }).limit(10)
+				? await User.find().sort({ _id: -1 }).limit(5)
 				: await User.find();
 			return res.status(Ok_Code).json({ allUsers });
 		} catch (error) {
@@ -102,7 +100,7 @@ router.get("/", authorization, async (req, res) => {
 });
 
 ////// Get User Stats \\\\\\
-router.get("/stats", async (req, res) => {
+router.get("/stats", authorization, async (req, res) => {
 	const today = new Date();
 	const lastYear = today.setFullYear(today.setFullYear() - 1);
 	const monthsArray = [
@@ -122,8 +120,19 @@ router.get("/stats", async (req, res) => {
 
 	try {
 		const data = await User.aggregate([
-			{ $project: { month: { $month: "$createdAt" } } },
-			{ $group: { _id: "$month", total: { $sum: 1 } } },
+			{
+				$project: {
+					month: {
+						$month: "$createdAt",
+					},
+				},
+			},
+			{
+				$group: {
+					_id: "$month",
+					total: { $sum: 1 },
+				},
+			},
 		]);
 		return res.status(Ok_Code).json({ data });
 	} catch (error) {

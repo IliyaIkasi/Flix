@@ -1,20 +1,19 @@
 import "./watch.scss";
-import video from "../../medias/videos/Mr-Robot.mp4";
 import { ArrowBackOutlined } from "@material-ui/icons";
+import { Link, useLocation } from "react-router-dom";
 
 const Watch = () => {
+	const location = useLocation();
+	const movie = location.state.movie;
 	return (
 		<div className="watch-container">
-			<div className="back-btn">
-				<ArrowBackOutlined />
-				<p>Home</p>
-			</div>
-			<video
-				src={video}
-				autoPlay={true}
-				controls={true}
-				onProgress={true}
-			></video>
+			<Link to="/">
+				<div className="back-btn">
+					<ArrowBackOutlined />
+					<p>Home</p>
+				</div>
+			</Link>
+			<video src={`http://localhost:4000/${movie.trailer}`} autoPlay controls progress="true"></video>
 		</div>
 	);
 };

@@ -1,13 +1,22 @@
 import "./featured.scss";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-import { slideshow } from "../../data";
+import { MovieContext } from "../../context/movie_context/MovieContext";
+import { getRandomMovies } from "../../context/movie_context/MovieApiCalls";
+import { matchRoutes, useLocation } from "react-router-dom";
 
-const Featured = ({ type }) => {
+const Featured = () => {
+	const routes = [{ path: "" }, { path: "Movie" }, { path: "Series" }];
+	const location = useLocation();
+	const locate = location.pathname;
+	const [{ route }] = matchRoutes(routes, locate);
+	const type = route.path;
+
+	const { movies, dispatch } = useContext(MovieContext);
+	const url = "http://localhost:4000/";
+
 	useEffect(() => {
 		var slideIndex = 0;
-		showSlides();
-		featSlides();
 
 		function showSlides() {
 			var i;
@@ -36,7 +45,16 @@ const Featured = ({ type }) => {
 			featured[slideIndex - 1].style.display = "block";
 			setTimeout(featSlides, 10000); // Change image every 10 seconds
 		}
-	}, []);
+		showSlides();
+		featSlides();
+	}, [type]);
+
+	useEffect(() => {
+		const getRandomContent = (type) => {
+			getRandomMovies(type, dispatch);
+		};
+		getRandomContent();
+	}, [type, dispatch]);
 
 	return (
 		<div className="featured-container">
@@ -61,34 +79,29 @@ const Featured = ({ type }) => {
 					</select>
 				</div>
 			)}
-			{slideshow.map((item) => (
-				<React.Fragment key={item.id}>
-					<div className="featured-slideshow">
-						<div className="mySlides fade">
-							<div className="number-text" number={item.id}></div>
-							<img key={item.id} src={item.image} alt={item.image} />
-						</div>
+			<div key={movies._id}>
+				<div className="featured-slideshow">
+					<div className="mySlides fade">
+						<img src={url + movies.img} alt={movies.title} />
 					</div>
-				</React.Fragment>
-			))}
-			<div className="featured-info">
-				{slideshow.map((item) => (
-					<React.Fragment key={item.id}>
-						<div className="myfeatured fade">
-							<img key={item.id} src={item.feat} alt={item.feat} />
-							<span className="info-desc">{item.desc}</span>
-						</div>
-					</React.Fragment>
-				))}
-				<div className="info-buttons">
-					<button className="btn-play">
-						<PlayArrow />
-						<span>Play</span>
-					</button>
-					<button className="btn-more">
-						<InfoOutlined />
-						<span>Info</span>
-					</button>
+				</div>
+				<div className="featured-info">
+					<div className="myfeatured fade">
+						<span className="info-title">{movies.title}</span>
+						<img src={url + movies.img} alt={movies.title} />
+						<span className="info-desc">{movies.desc}</span>
+					</div>
+
+					<div className="info-buttons">
+						<button className="btn-play">
+							<PlayArrow />
+							<span>Play</span>
+						</button>
+						<button className="btn-more">
+							<InfoOutlined />
+							<span>Info</span>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

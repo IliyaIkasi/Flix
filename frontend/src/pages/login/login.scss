@@ -117,3 +117,39 @@
 		}
 	}
 }
+
+@media screen and (max-width: 400px) {
+	.form-container {
+		.top-section {
+			.top-wrapper {
+				padding: 0 1rem;
+
+				.flix-logo {
+					z-index: 0;
+				}
+
+				.signinBtn {
+					z-index: 0;
+				}
+			}
+		}
+		.login-section {
+			.form-section {
+				width: 20rem;
+				padding: 0.5rem;
+
+				.text-box {
+					margin-top: 0.5rem;
+				}
+
+				.login-btn {
+					margin-top: 0.5rem;
+				}
+
+				span {
+					margin-top: 0.5rem;
+				}
+			}
+		}
+	}
+}

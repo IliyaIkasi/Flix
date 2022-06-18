@@ -78,7 +78,7 @@ router.get("/random", authorization, async (req, res) => {
 	const type = req.query.type;
 	let movie;
 	try {
-		if (type == "series") {
+		if (type == "Series") {
 			movie = await Movie.aggregate([
 				{ $match: { isSeries: true } },
 				{ $sample: { size: 1 } },
@@ -102,14 +102,12 @@ router.get("/", authorization, async (req, res) => {
 	const query = req.query.recent;
 	if (req.user.isAdmin) {
 		try {
-			allMovies = query
-				? (await Movie.find()).reverse()
-				: await Movie.find();
+			allMovies = query ? (await Movie.find()).reverse() : await Movie.find();
 			return res.status(Ok_Code).json({ message: Ok, allMovies });
 		} catch (error) {
 			return res
 				.status(InternalServer_Code)
-				.json({ message: InternalServer + "we", error: error.message });
+				.json({ message: InternalServer, error: error.message });
 		}
 	} else {
 		return res.status(Validation_Code).json({ message: "Admins Only." });
